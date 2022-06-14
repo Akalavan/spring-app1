@@ -4,10 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="testBean"
-          class="ru.akalavan.spring.TestBean">
+    <bean id="musicBean"
+          class="ru.akalavan.spring.RockMusic">
+    </bean>
 
-        <constructor-arg value="Mikhail"/>
+    <bean id="musicPlayer"
+          class="ru.akalavan.spring.MusicPlayer">
+        <property name="music" ref="musicBean"/>
     </bean>
 
 </beans>
