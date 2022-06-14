@@ -2,33 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:cotext="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <cotext:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="rockMusicBean"
-          class="ru.akalavan.spring.RockMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getRockMusic">
-    </bean>
-
-    <bean id="classicalMusicBean"
-          class="ru.akalavan.spring.ClassicalMusic">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="ru.akalavan.spring.MusicPlayer">
-        <property name="music">
-            <list>
-                <ref bean="rockMusicBean"/>
-                <ref bean="classicalMusicBean"/>
-            </list>
-        </property>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    <context:component-scan base-package="ru.akalavan.spring"/>
 
 </beans>
